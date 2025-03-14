@@ -17,7 +17,7 @@ export function ThemeSwitcher() {
 
   return (
     <div className='flex flex-col'>
-      The current theme is: {theme}
+      Tema: {theme}
       <div className='flex gap-2'>
         <Button
           isIconOnly
