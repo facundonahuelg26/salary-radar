@@ -6,7 +6,12 @@ export default async function middleware(req: NextRequest) {
   const session = await auth() // Obtiene la sesión del usuario
   const { pathname } = req.nextUrl
 
-  if (!session && (pathname === '/dashboard' || pathname === '/about')) {
+  if (
+    !session &&
+    (pathname === '/dashboard' ||
+      pathname === '/onboarding' ||
+      pathname === '/profile')
+  ) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
 
@@ -20,5 +25,11 @@ export default async function middleware(req: NextRequest) {
 
 // Definir las rutas protegidas
 export const config = {
-  matcher: ['/', '/login', '/dashboard/:path*', '/about/:path*'],
+  matcher: [
+    '/',
+    '/login',
+    '/dashboard/:path*',
+    '/onboarding/:path*',
+    '/profile/:path*',
+  ],
 }
