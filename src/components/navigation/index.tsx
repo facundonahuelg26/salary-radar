@@ -13,13 +13,15 @@ import { ROUTES } from '@/utils'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import CustomDropdown from './custom-dropdown'
+import { useTranslations } from 'next-intl'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const t = useTranslations('Navigation')
   const menuItems = [
-    { title: 'Dashboard', link: ROUTES.DASHBOARD },
-    { title: 'Proceso de registro', link: ROUTES.ONBOARDING },
+    { title: t('linkDashboard'), link: ROUTES.DASHBOARD },
+    { title: t('linkConfigureProfile'), link: ROUTES.CONFIGURE_PROFILE },
   ]
   const pathname = usePathname()
 
@@ -52,18 +54,22 @@ const Navigation = () => {
         />
       </NavbarContent>
       <NavbarBrand>
-        <p className='font-bold text-inherit'>RADAR DE SALARIOS</p>
+        <p className='font-bold text-inherit'>{t('appName')}</p>
       </NavbarBrand>
 
       <NavbarContent className='hidden sm:flex gap-4' justify='center'>
         <NavbarItem isActive={pathname === ROUTES.DASHBOARD}>
           <Link color='foreground' href={ROUTES.DASHBOARD}>
-            Dashboard
+            {t('linkDashboard')}
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={pathname === ROUTES.ONBOARDING}>
-          <Link aria-current='page' color='foreground' href={ROUTES.ONBOARDING}>
-            Proceso de registro
+        <NavbarItem isActive={pathname === ROUTES.CONFIGURE_PROFILE}>
+          <Link
+            aria-current='page'
+            color='foreground'
+            href={ROUTES.CONFIGURE_PROFILE}
+          >
+            {t('linkConfigureProfile')}
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -85,7 +91,7 @@ const Navigation = () => {
         ))}
       </NavbarMenu>
       <NavbarContent as='div' justify='end'>
-        <CustomDropdown />
+        <CustomDropdown t={t} />
       </NavbarContent>
     </Navbar>
   )

@@ -9,7 +9,7 @@ export default async function middleware(req: NextRequest) {
   if (
     !session &&
     (pathname === '/dashboard' ||
-      pathname === '/onboarding' ||
+      pathname === '/configure-profile' ||
       pathname === '/profile')
   ) {
     return NextResponse.redirect(new URL('/login', req.url))
@@ -29,7 +29,7 @@ export const config = {
     '/',
     '/login',
     '/dashboard/:path*',
-    '/onboarding/:path*',
+    '/configure-profile/:path*',
     '/profile/:path*',
   ],
 }

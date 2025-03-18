@@ -2,6 +2,6 @@ export const ROUTES = {
   LOGIN: '/login',
   HOME: '/',
   DASHBOARD: '/dashboard',
-  ONBOARDING: '/onboarding',
+  CONFIGURE_PROFILE: '/configure-profile',
   PROFILE: '/profile',
 }
