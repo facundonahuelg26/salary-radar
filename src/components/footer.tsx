@@ -1,13 +1,12 @@
 import React from 'react'
-
-const footer = () => {
+import { getTranslations } from 'next-intl/server'
+const Footer = async () => {
+  const t = await getTranslations('Footer')
   return (
     <div>
-      <p className='p-4 text-base text-center font-semibold'>
-        Desarrollado por F Dev. © 2024. Todos los derechos reservados.
-      </p>
+      <p className='p-4 text-base text-center font-semibold'>{t('text')}</p>
     </div>
   )
 }
 
-export default footer
+export default Footer
